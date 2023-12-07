@@ -1,0 +1,66 @@
+---
+title: "Final Project Part B"
+format: docx
+editor: visual
+---
+# Biostat213 Summer 2023 
+
+First: Peijun
+
+Last: Liu
+
+## Read data
+
+```{r}
+Final<-read.csv("/Users/petra/Desktop/study/UCSF/BIOSTAT 213/ObesityDataSet.csv")
+
+```
+
+## Summary
+
+[1pt] Print the structure of 'hf':
+
+```{r}
+str(Final)
+```
+
+## Identify up to 4 categorical and up to 4 continuous variables of your choice
+
+```{r}
+sapply(Final, class)
+
+#4 categoricalvariables: 'Gender','family_history_with_overweight','SMOKE','NObeyesdad'
+#4 continuous variables: 'Age','Height','Weight','FAF'
+```
+
+## For each categorical variable, print counts for each level
+```{r}
+for (i4 in c('Gender','family_history_with_overweight','SMOKE','NObeyesdad')){
+  print(table(Final[[i4]]))
+}
+```
+
+### For each categorical variable, make a barplot of counts
+```{r}
+
+barplot(table(Final$Gender))
+barplot(table(Final$family_history_with_overweight))
+barplot(table(Final$SMOKE))
+barplot(table(Final$NObeyesdad))
+```
+
+### For each continuous variable, print mean, median, and standard deviation
+```{r}
+for (i5 in c('Age','Height','Weight','FAF')){
+  cat(i5," : ","mean",mean(Final[[i5]])," ","median",median(Final[[i5]])," ","standard deviation",sd(Final[[i5]]),"\n")
+}
+
+```
+## For each continuous variable, plot its distribution using a boxplot or a histogram (pick one type of plot and use it for all continuous variables)
+```{r}
+par(mfrow = c(1, 4))
+hist(Final$Age, col = "#052049bb", border = "white", main = "")
+hist(Final$Height, col = "#052049bb", border = "white", main = "")
+hist(Final$Weight, col = "#052049bb", border = "white", main = "")
+hist(Final$FAF, col = "#052049bb", border = "white", main = "")
+```
